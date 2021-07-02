@@ -64,7 +64,7 @@ export const transpileFiles = (files: IFiles) => {
         }
       } catch (err) {
         console.error(err)
-        return { type: "TRANSPILER_ERROR", payload: err }
+        return { error: err }
       }
     } else if (filePath.endsWith(".json")) {
       mappedFiles[filePath] = "export default" + files[filePath]
@@ -90,7 +90,7 @@ export const transpileSingleFile = (path: string, data: string) => {
     return finalCode
   } catch (err) {
     console.error(err.message)
-    return { type: "TRANSPILER_ERROR", payload: err }
+    return { error: err }
   }
 }
 
